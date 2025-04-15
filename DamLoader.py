@@ -1,6 +1,7 @@
 import yt_dlp
 import shutil
 import sys
+import os
 
 def banner():
     banner = r"""
@@ -51,12 +52,16 @@ def get_titles(wordlist_path):
     return titles
 
 def download_videos(wordlist_path, format='mp3'):
+    # Cria as pastas se não existirem
+    os.makedirs("mp3", exist_ok=True)
+    os.makedirs("video", exist_ok=True)
+
     if format == 'mp3':
         verify_ffmpeg()
         yt_opts = {
             'quiet': True,
             'no_warnings': True,
-            'outtmpl': '%(title)s.%(ext)s',
+            'outtmpl': os.path.join('mp3', '%(title)s.%(ext)s'),
             'format': 'bestaudio/best',
             'postprocessors': [{
                 'key': 'FFmpegExtractAudio',
@@ -68,7 +73,7 @@ def download_videos(wordlist_path, format='mp3'):
         yt_opts = {
             'quiet': True,
             'no_warnings': True,
-            'outtmpl': '%(title)s.%(ext)s',
+            'outtmpl': os.path.join('video', '%(title)s.%(ext)s'),
             'format': 'bestvideo+bestaudio/best',
         }
 
