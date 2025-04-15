@@ -1,16 +1,24 @@
 import yt_dlp
 import shutil
 import sys
-import pyfiglet
-import os
 
 def banner():
-    banner = pyfiglet.figlet_format("DamLoader", font="big")
-    print('\n\n----------------------------------------------------------')
-    print(f"{banner}")
-    print("                      by DamClover")
-    print("----------------------------------------------------------\n\n")
+    banner = r"""
+----------------------------------------------------------
+ _____                  _                     _
+|  __ \                | |                   | |
+| |  | | __ _ _ __ ___ | |     ___   __ _  __| | ___ _ __
+| |  | |/ _` | '_ ` _ \| |    / _ \ / _` |/ _` |/ _ \ '__|
+| |__| | (_| | | | | | | |___| (_) | (_| | (_| |  __/ |
+|_____/ \__,_|_| |_| |_|______\___/ \__,_|\__,_|\___|_|
 
+
+
+                      by DamClover
+----------------------------------------------------------
+      """
+    print(f"\n\n{banner}\n\n")
+    
 def verify_ffmpeg():
     if shutil.which("ffmpeg") is None:
         print("[X] FFmpeg is not installed or not added to PATH.\n")
@@ -70,23 +78,39 @@ def download_videos(wordlist_path, format='mp3'):
     with open(wordlist_path, 'r') as f:
         urls = [url.strip() for url in f if url.strip()]
 
+    failed = []
+    success_count = 0
+
     with yt_dlp.YoutubeDL(yt_opts) as ydl:
         for url, title in zip(urls, titles):
             if title:
-                print(f"[+] Downloading ({format.upper()}): {title}\n")
+                print(f"[+] Downloading ({format.upper()}): {title}")
             else:
                 print(f"[+] Downloading ({format.upper()}): {url} (Title not found)")
 
             try:
                 ydl.download([url])
                 print("[✓] Download completed.\n")
+                success_count += 1
             except yt_dlp.utils.PostProcessingError as e:
                 if "Permission denied" in str(e):
                     print(f"\n[X] {url}: Possible file open or you don't have permission to save the file.\n")
                 else:
                     print(f"\n[X] Post-processing error: {e}\n")
+                failed.append(url)
             except Exception as e:
                 print(f"\n[X] Error downloading {url}: {e}\n")
+                failed.append(url)
+
+    # Result summary
+    total = len(urls)
+    print(f"\n[!] Download Summary: {success_count}/{total} downloads completed successfully.\n")
+
+    if failed:
+        print("[!] Links that failed to download:\n")
+        for link in failed:
+            print(link)
+        input("\nPress ENTER to close...")
 
 if __name__ == '__main__':
     banner()
@@ -97,6 +121,7 @@ if __name__ == '__main__':
     print("[2] MP4 (full video)")
 
     choice = input("\nOption: ").strip()
+    print("\n[*] Loading links...\n")
 
     if choice == '1':
         format = 'mp3'
