@@ -70,7 +70,6 @@ def download_videos(wordlist_path, format='mp3'):
             'no_warnings': True,
             'outtmpl': '%(title)s.%(ext)s',
             'format': 'bestvideo+bestaudio/best',
-            'merge_output_format': 'mp4',
         }
 
     titles = get_titles(wordlist_path)
