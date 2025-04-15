@@ -111,6 +111,8 @@ def download_videos(wordlist_path, format='mp3'):
         for link in failed:
             print(link)
         input("\nPress ENTER to close...")
+    else:
+        input("\nPress ENTER to close...")
 
 if __name__ == '__main__':
     banner()
