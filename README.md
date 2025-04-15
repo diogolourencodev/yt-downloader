@@ -1,6 +1,3 @@
-
-
-md
 <p align="center">
   <img src="https://capsule-render.vercel.app/api?type=waving&color=0d0221,240046,3c096c,5a189a,7209b7&height=180&section=header&text=DamLoader&fontColor=ffffff&fontSize=40&animation=fadeIn" />
 </p>
