@@ -52,11 +52,9 @@ def get_titles(wordlist_path):
     return titles
 
 def download_videos(wordlist_path, format='mp3'):
-    # Cria as pastas se não existirem
-    os.makedirs("mp3", exist_ok=True)
-    os.makedirs("video", exist_ok=True)
-
     if format == 'mp3':
+        os.makedirs("mp3", exist_ok=True)
+
         verify_ffmpeg()
         yt_opts = {
             'quiet': True,
@@ -70,6 +68,8 @@ def download_videos(wordlist_path, format='mp3'):
             }],
         }
     else:
+        os.makedirs("video", exist_ok=True)
+        
         yt_opts = {
             'quiet': True,
             'no_warnings': True,
