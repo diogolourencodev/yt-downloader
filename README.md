@@ -1,10 +1,10 @@
 <p align="center">
-  <img src="https://capsule-render.vercel.app/api?type=waving&color=0d0221,240046,3c096c,5a189a,7209b7&height=180&section=header&text=DamLoader&fontColor=ffffff&fontSize=40&animation=fadeIn" />
+  <img src="https://capsule-render.vercel.app/api?type=waving&color=0d0221,240046,3c096c,5a189a,7209b7&height=180&section=header&text=yt-downloader&fontColor=ffffff&fontSize=40&animation=fadeIn" />
 </p>
 
 # 🎬 **DamLoader** - YouTube Video Downloader 🔥
 
-**DamLoader** is a Python script designed to make your video/audio downloading from YouTube a breeze.  
+This simple project is a Python script designed to make your video/audio downloading from YouTube a breeze.  
 With a list of URLs, you can easily grab the content you need, either as an MP3 audio or full MP4 video.  
 Developed with **Python** and powered by **yt-dlp**, it’s fast, efficient, and ready to rock!
 
@@ -40,12 +40,12 @@ If you need MP3 downloads, make sure FFmpeg is installed:
 
 ## 🏃 **Usage (For Python Script)** 🚀
 
-1. **Download** the `DamLoader.py` script.
+1. **Download** the `yt-downloader.py` script.
 2. Prepare a `.txt` file with YouTube URLs (one URL per line).
 3. Run the script via terminal:
 
 ```bash
-python DamLoader.py
+python yt-downloader.py
 ```
 
 4. The script will prompt you for the URL file path.
@@ -54,22 +54,6 @@ python DamLoader.py
    - `2` for MP4 (full video)
 
 The script will handle the download!
-
----
-
-## ⚡ **Usage (For Executable .exe)** 💻
-
-No Python? No problem. Use the standalone executable (`DamLoader.exe`):
-
-1. **Download** the `DamLoader.exe` from the releases section.
-2. Prepare your `.txt` file with YouTube URLs (one per line).
-3. **Double-click** the `.exe` file to run.
-4. The program will ask for the `.txt` file location.
-5. Choose the download format:
-   - `1` for MP3
-   - `2` for MP4
-
-The `.exe` file will take care of the rest.
 
 ---
 
@@ -83,7 +67,7 @@ The `.exe` file will take care of the rest.
 
 ## 🖤 **License** 💡
 
-This project is licensed under the **MIT License**. Check out the [LICENSE](LICENSE) file for more details.
+Idk what is this :D
 
 ---
 
